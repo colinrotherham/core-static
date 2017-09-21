@@ -1,0 +1,81 @@
+{
+	"clean": {
+		"src": "./dist"
+	},
+	"copy": {
+		"src": [
+			"./src/**/*.*",
+			"!./src/templates",
+			"!./src/templates/**",
+			"!./src/assets",
+			"!./src/assets/**"
+		],
+		"watch": "./src/**/*",
+		"dest": "./dist"
+	},
+	"css": {
+		"src": [
+			"./src/assets/scss/critical.scss",
+			"./src/assets/scss/main.scss",
+			"./src/assets/scss/legacy.scss"
+		],
+		"watch": "./src/assets/**/*.scss",
+		"dest": "./dist/assets/css"
+	},
+	"html": {
+		"src": "./src/templates/*.hbs",
+		"layouts": "./src/templates/layouts/*.hbs",
+		"partials": "./src/templates/partials/*.hbs",
+		"watch": [
+			"./src/templates/**/*.hbs",
+			"./src/assets/css/critical.min.css"
+		],
+		"dest": "./dist"
+	},
+	"img": {
+		"fallbacks": {
+			"src": "./src/assets/img/**/*.svg",
+			"watch": "./src/assets/img/**/*.svg",
+			"dest": "./dist/assets/img"
+		},
+		"optimise": {
+			"src": "./dist/assets/img/**/*.{png,jpg,gif,svg}",
+			"dest": "./dist/assets/img"
+		}
+	},
+	"js": {
+		"babel": {
+			"src": "./src/**/*.js",
+			"watch": "./src/assets/**/*.js",
+			"dest": "./dist"
+		},
+		"webpack": {
+			"src": [
+				"./src/assets/js/critical.js",
+				"./src/assets/js/main.js",
+				"./src/assets/js/legacy.js"
+			],
+			"dest": "./dist/assets/js"
+		}
+	},
+	"lint": {
+		"a11y": {
+			"src": "./dist/*.html"
+		},
+		"css": {
+			"src": "./src/assets/**/*.scss"
+		},
+		"html": {
+			"src": "`./dist/*.html"
+		},
+		"js": {
+			"src": [
+				"./src/assets/**/*.{js,json}",
+				"./src/**/*.{js,json}"
+			]
+		}
+	},
+	"serve": {
+		"src": "./dist"
+	}
+}
