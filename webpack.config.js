@@ -40,6 +40,7 @@ export default {
 			name: 'critical'
 		}),
 		new UglifyJSPlugin({
+			sourceMap: true,
 			uglifyOptions: {
 				compress: {
 					ie8: true,
@@ -51,8 +52,7 @@ export default {
 				output: {
 					comments: false,
 					ie8: true
-				},
-				sourceMap: true
+				}
 			}
 		})
 	],
