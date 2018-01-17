@@ -8,7 +8,6 @@ require('@babel/register');
 const task = require('@colinrotherham/core');
 const config = require('./tasks/config.json');
 const gulp = require('gulp');
-const sequence = require('run-sequence');
 
 /**
  * Child tasks
@@ -26,33 +25,69 @@ gulp.task('lint:css', task.lint.css(config.lint.css, gulp));
 gulp.task('lint:html', task.lint.html(config.lint.html, gulp));
 gulp.task('lint:js', task.lint.js(config.lint.js, gulp));
 gulp.task('serve', task.serve(config.serve));
-gulp.task('watch', task.watch(config));
+gulp.task('watch', task.watch(config, gulp));
 
 /**
  * Main tasks
  */
 
 // Shared code compile task
-gulp.task('compile', done => {
-	sequence(['lint:js', 'lint:css'], ['js:webpack', 'css'], done);
-});
+gulp.task(
+	'compile',
+	gulp.parallel(
+		gulp.series(
+			'lint:js',
+			'lint:css'
+		),
+		gulp.series(
+			'js:webpack',
+			'css'
+		)
+	)
+);
 
 // Shared build tasks
-gulp.task('build', done => {
-	sequence(['compile', 'img:fallbacks'], ['html', 'img:optimise'], done);
-});
+gulp.task(
+	'build',
+	gulp.series(
+		gulp.parallel(
+			'compile',
+			'img:fallbacks'
+		),
+		gulp.parallel(
+			'html',
+			'img:optimise'
+		)
+	)
+);
 
 // Default tasks
-gulp.task('default', ['clean'], done => {
-	sequence('copy', 'build', done);
-});
+gulp.task(
+	'default',
+	gulp.series(
+		'clean',
+		'copy',
+		'build'
+	)
+);
 
 // Test tasks
-gulp.task('test', done => {
-	sequence('lint:html', 'lint:a11y', done);
-});
+gulp.task(
+	'test',
+	gulp.parallel(
+		'lint:html',
+		'lint:a11y'
+	)
+);
 
 // Development tasks
-gulp.task('dev', ['clean'], done => {
-	sequence('default', ['watch', 'serve'], done);
-});
+gulp.task(
+	'dev',
+	gulp.series(
+		'default',
+		gulp.parallel(
+			'watch',
+			'serve'
+		)
+	)
+);
