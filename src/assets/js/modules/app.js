@@ -7,6 +7,8 @@ import './example';
 export default class App {
 
 	init () {
-		console.log('App started');
+		if (window.console) {
+			console.log('App started');
+		}
 	}
 }
