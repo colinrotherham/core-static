@@ -44,11 +44,6 @@
 		}
 	},
 	"js": {
-		"babel": {
-			"src": "./src/**/*.js",
-			"watch": "./src/assets/**/*.js",
-			"dest": "./dist"
-		},
 		"webpack": {
 			"src": [
 				"./src/assets/js/critical.js",
