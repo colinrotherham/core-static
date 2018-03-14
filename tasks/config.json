@@ -28,7 +28,7 @@
 		"partials": "./src/templates/partials/*.hbs",
 		"watch": [
 			"./src/templates/**/*.hbs",
-			"./src/assets/css/critical.min.css"
+			"./dist/assets/css/critical.min.css"
 		],
 		"dest": "./dist"
 	},
