@@ -1,7 +1,6 @@
-import UglifyJSPlugin from 'uglifyjs-webpack-plugin';
+import UglifyJsPlugin from 'uglifyjs-webpack-plugin';
 import fs from 'fs';
 import path from 'path';
-import webpack from 'webpack';
 
 // Use config for running process
 let options = {};
@@ -14,6 +13,7 @@ if (fs.existsSync(optionsPath)) {
 // Return module
 export default {
 	devtool: 'source-map',
+	mode: 'production',
 
 	module: {
 		rules: [{
@@ -32,14 +32,14 @@ export default {
 	output: {
 		chunkFilename: '[name]-[chunkhash].min.js',
 		filename: '[name].min.js',
+		path: path.resolve('./dist/assets/js'),
 		publicPath: '/assets/js/'
 	},
 
-	plugins: [
-		new webpack.optimize.CommonsChunkPlugin({
-			name: 'critical'
-		}),
-		new UglifyJSPlugin({
+	optimization: {
+		minimizer: [new UglifyJsPlugin({
+			cache: true,
+			parallel: true,
 			sourceMap: true,
 			uglifyOptions: {
 				compress: {
@@ -54,8 +54,8 @@ export default {
 					ie8: true
 				}
 			}
-		})
-	],
+		})]
+	},
 
 	resolve: {
 		modules: [
