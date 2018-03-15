@@ -51,6 +51,7 @@
 				"./src/assets/js/main.js",
 				"./src/assets/js/legacy.js"
 			],
+			"watch": "./src/assets/**/*.js",
 			"dest": "./dist/assets/js"
 		}
 	},
