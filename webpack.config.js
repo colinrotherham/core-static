@@ -1,6 +1,7 @@
 import UglifyJsPlugin from 'uglifyjs-webpack-plugin';
 import fs from 'fs';
 import path from 'path';
+import webpack from 'webpack';
 
 // Use config for running process
 let options = {};
@@ -12,7 +13,6 @@ if (fs.existsSync(optionsPath)) {
 
 // Return module
 export default {
-	devtool: 'source-map',
 	mode: 'production',
 
 	module: {
@@ -56,6 +56,13 @@ export default {
 			}
 		})]
 	},
+
+	plugins: [
+		new webpack.SourceMapDevToolPlugin({
+			filename: '[name].min.js.map',
+			publicPath: '/assets/js/'
+		})
+	],
 
 	resolve: {
 		modules: [
