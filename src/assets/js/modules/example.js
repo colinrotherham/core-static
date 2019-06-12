@@ -3,5 +3,5 @@
  */
 
 if (window.console) {
-	console.log('Hello, @colinrotherham/core is ready');
+  console.log('Hello, @colinrotherham/core is ready');
 }
