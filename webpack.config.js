@@ -1,15 +1,7 @@
 import UglifyJsPlugin from 'uglifyjs-webpack-plugin';
-import fs from 'fs';
+import options from './.babelrc.client.js';
 import path from 'path';
 import webpack from 'webpack';
-
-// Use config for running process
-let options = {};
-const optionsPath = path.resolve(process.cwd(), '.babelrc.client.js');
-
-if (fs.existsSync(optionsPath)) {
-  options = require(optionsPath);
-}
 
 // Return module
 export default {
