@@ -1,0 +1,37 @@
+<!doctype html>
+<html{% if locale %} lang="{{ locale }}"{% endif %}>
+    <head>
+        <meta charset="utf-8">
+        <title>{{ title }}</title>
+
+        {% if description %}<!-- Meta description -->
+        <meta name="description" content="{{ description }}">
+
+        {% endif %}<!-- Handheld support -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Critical CSS -->
+        <!--[if (gte IE 9)|!(IE)]><!-->
+        <style>{{ fileContents("./dist/assets/css/critical.min.css") | safe }}</style>
+        <!--<![endif]-->
+
+        <!-- Critical JS -->
+        <script>document.documentElement.className = 'advanced';
+        {{ fileContents("./dist/assets/js/critical.min.js") | safe }}</script>
+
+        <!-- Lazy-load CSS -->
+        <!--[if (gte IE 9)|!(IE)]><!-->
+        <script>loadCSS('/assets/css/main.min.css?v={{timestamp}}');</script>
+        <noscript><link rel="stylesheet" href="/assets/css/main.min.css?v={{ timestamp }}"></noscript>
+        <!--<![endif]-->
+        <!--[if lt IE 9]>
+        <link rel="stylesheet" href="/assets/css/legacy.min.css?v={{timestamp}}">
+        <script src="/assets/js/legacy.min.js"></script>
+        <![endif]-->
+    </head>
+    <body class="page page--{{ name }}">
+{% block content %}{% endblock %}
+        <!-- Script includes -->
+        <script src="/assets/js/main.min.js?v={{ timestamp }}" defer></script>
+    </body>
+</html>

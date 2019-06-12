@@ -5,8 +5,8 @@
   "copy": {
     "src": [
       "./src/**/*.*",
-      "!./src/templates",
-      "!./src/templates/**",
+      "!./src/views",
+      "!./src/views/**/*",
       "!./src/assets",
       "!./src/assets/**"
     ],
@@ -37,11 +37,6 @@
     }
   },
   "img": {
-    "fallbacks": {
-      "src": "./src/assets/img/**/*.svg",
-      "watch": "./src/assets/img/**/*.svg",
-      "dest": "./dist/assets/img"
-    },
     "optimise": {
       "src": "./dist/assets/img/**/*.{png,jpg,gif,svg}",
       "dest": "./dist/assets/img"

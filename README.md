@@ -8,20 +8,13 @@ Try the demo: https://apps.colinr.com/core/
 ### Features
 
 1. Critical CSS loading (100/100 on Google PageSpeed)
-2. HTML template generation via Assemble.io
+2. HTML template generation via [Nunjucks](https://mozilla.github.io/nunjucks/)
 3. ES6 module bundling via Babel and webpack
-4. Sass, JavaScript and HTML linting
-5. Supports Internet Explorer 8 (yikes)
+4. Supports Internet Explorer 8 (yikes)
 
 ### Initial setup
 
-Install Node.JS
-
-As root/administrator:
-
-```
-npm install -g gulp-cli
-```
+Install Node.JS v12.4+
 
 Install dependencies automatically by running:
 ```
