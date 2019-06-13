@@ -45,11 +45,11 @@
   "js": {
     "webpack": {
       "src": [
-        "./src/assets/js/critical.js",
-        "./src/assets/js/main.js",
-        "./src/assets/js/legacy.js"
+        "./src/assets/js/critical.mjs",
+        "./src/assets/js/main.mjs",
+        "./src/assets/js/legacy.mjs"
       ],
-      "watch": "./src/assets/**/*.js",
+      "watch": "./src/assets/**/*.mjs",
       "dest": "./dist/assets/js"
     }
   },
