@@ -1,10 +1,10 @@
 import * as task from '@colinrotherham/core';
 import config from './tasks/config.json';
 import gulp from 'gulp';
-import webpackConfig from './webpack.config.js';
+import webpackConfig from './webpack.config.mjs';
 
 // Add webpack config
-config.js.webpack = { ...config.js.webpack, webpackConfig };
+config.js.webpack = { ...config.js.webpack, options: webpackConfig };
 
 /**
  * Child tasks

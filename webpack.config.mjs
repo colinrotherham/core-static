@@ -1,5 +1,5 @@
-import UglifyJsPlugin from 'uglifyjs-webpack-plugin';
-import options from './.babelrc.client.js';
+import TerserPlugin from 'terser-webpack-plugin';
+import babel from './.babelrc.client.js';
 import path from 'path';
 import webpack from 'webpack';
 
@@ -8,17 +8,17 @@ export default {
   mode: 'production',
 
   module: {
-    rules: [{
-      test: /\.js$/,
-      include: [
-        path.resolve('./src'),
-        path.resolve('./src/assets'),
-      ],
-      use: [{
-        loader: 'babel-loader',
-        options: options,
-      }],
-    }],
+    rules: [
+      {
+        exclude: /node_modules/,
+        type: 'javascript/auto',
+        test: /\.m?js$/,
+        use: [{
+          loader: 'babel-loader',
+          options: babel,
+        }],
+      },
+    ],
   },
 
   output: {
@@ -29,11 +29,11 @@ export default {
   },
 
   optimization: {
-    minimizer: [new UglifyJsPlugin({
+    minimizer: [new TerserPlugin({
       cache: true,
       parallel: true,
       sourceMap: true,
-      uglifyOptions: {
+      terserOptions: {
         compress: {
           ie8: true,
           warnings: false,
@@ -58,7 +58,7 @@ export default {
 
   resolve: {
     modules: [
-      'node_modules',
+      './node_modules',
       `./src/assets/js`,
     ],
   },
