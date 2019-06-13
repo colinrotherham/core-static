@@ -14,11 +14,11 @@ Try the demo: https://apps.colinr.com/core/
 
 ### Initial setup
 
-Install Node.JS v12.4+
+Install Node.JS v10.16+
 
 Install dependencies automatically by running:
 ```
-npm install
+npm ci
 ```
 
 ### Building
@@ -35,7 +35,7 @@ npm run dev
 ```
 
 ### Testing
-Run tests on the build’s HTML output
+Run quality checks on your code:
 
 ```
 npm test
