@@ -13,8 +13,14 @@ Try the demo: https://apps.colinr.com/core/
 4. Supports Internet Explorer 8 (yikes)
 
 ### Initial setup
+Install _nvm_ (Node Version Manager)
+https://github.com/nvm-sh/nvm#installation-and-update
 
-Install Node.JS v10.16+
+Install the latest Node.js 12 LTS release using _nvm_:
+
+```console
+nvm install
+```
 
 Install dependencies automatically by running:
 ```

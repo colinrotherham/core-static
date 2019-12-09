@@ -7,10 +7,10 @@ module.exports = {
   ],
   presets: [
     ['@babel/preset-env', {
-      shippedProposals: true,
-      useBuiltIns: 'usage',
       corejs: 3,
       loose: true,
+      shippedProposals: true,
+      useBuiltIns: 'usage',
     }],
   ],
 };

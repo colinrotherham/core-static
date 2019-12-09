@@ -7,6 +7,9 @@
     "type": "git",
     "url": "https://github.com/colinrotherham/core-static.git"
   },
+  "engines": {
+    "node": ">=12.13.0 <13.0.0"
+  },
   "author": "Colin Rotherham",
   "homepage": "https://github.com/colinrotherham/core-static",
   "scripts": {
